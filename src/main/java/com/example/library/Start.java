@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.example.library;
 
-import com.example.demo.domain.User;
+import com.example.library.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

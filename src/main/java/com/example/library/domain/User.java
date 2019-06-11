@@ -1,6 +1,4 @@
-package com.example.demo.domain;
-
-import lombok.AllArgsConstructor;
+package com.example.library.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.example.library;
 
-import com.example.demo.domain.User;
+import com.example.library.domain.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
