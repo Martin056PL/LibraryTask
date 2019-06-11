@@ -18,8 +18,7 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void run() {
+    public void addUser(/*Some user will be added as parameter*/) {
         User user = new User.UserBuilder()
                 .setUserLogin("sadfSADFSDF23RSADSAd")
                 .setUserPassword("Mareczek3@")
@@ -34,6 +33,10 @@ public class UserService {
                 .build();
 
         userRepo.save(user);
-
     }
+
+    public void deleteUser(User user){
+        userRepo.delete(user);
+    }
+
 }
