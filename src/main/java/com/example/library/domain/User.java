@@ -12,7 +12,7 @@ public class User implements Serializable, UserInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long userId;
     @Column
     private String login;
     @Column
