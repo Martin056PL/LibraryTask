@@ -3,27 +3,37 @@ package com.example.library.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "book")
 public class Book implements Serializable, BookInterface {
 
     private static final long serialVersionUID = -8819227175701208566L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private Long bookId;
+
     @Column
     private String title;
-    @Column
-    private List<String> authors;
+
+
+    @ElementCollection
+    @CollectionTable(name = "book_authors", joinColumns = @JoinColumn(name = "bookId"))
+    @Column(name = "author")
+    private List<String> authors = new ArrayList<>();
+
     @Column
     private String ISBN;
-    @Column
+
+    @Column(name = "publishing_house")
     private String publishingHouse;
-    @Column
+
+    @Column(name = "place_of_deploy")
     private String placeOfDeploy;
+
     @Column
     private BigDecimal price;
 
@@ -32,7 +42,7 @@ public class Book implements Serializable, BookInterface {
         //constructor for JPA
     }
 
-    public Book(String title, List<String> authors, String ISBN, String publishingHouse, String placeOfDeploy, BigDecimal price) {
+    public Book(String title, List<String>  authors, String ISBN, String publishingHouse, String placeOfDeploy, BigDecimal price) {
         this.title = title;
         this.authors = authors;
         this.ISBN = ISBN;
@@ -83,7 +93,7 @@ public class Book implements Serializable, BookInterface {
                 '}';
     }
 
-    private static class BookBuilder {
+    public static class BookBuilder {
 
         private String title;
         private List<String> authors;

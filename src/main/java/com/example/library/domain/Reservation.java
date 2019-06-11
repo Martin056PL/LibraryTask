@@ -15,7 +15,7 @@ public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "reservation_id")
-    private Integer reservation_id;
+    private Long reservation_id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -44,11 +44,11 @@ public class Reservation implements Serializable {
         this.endDate = endDate;
     }
 
-    public Integer getReservation_id() {
+    public Long getReservation_id() {
         return reservation_id;
     }
 
-    public void setReservation_id(Integer reservation_id) {
+    public void setReservation_id(Long reservation_id) {
         this.reservation_id = reservation_id;
     }
 

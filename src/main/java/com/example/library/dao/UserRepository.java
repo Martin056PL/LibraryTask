@@ -1,4 +1,4 @@
-package com.example.library;
+package com.example.library.dao;
 
 import com.example.library.domain.User;
 import org.springframework.data.repository.CrudRepository;
