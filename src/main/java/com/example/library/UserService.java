@@ -8,13 +8,13 @@ import org.springframework.stereotype.Controller;
 
 
 @Controller
-public class Start {
+public class UserService {
 
 
     private UserRepository userRepo;
 
     @Autowired
-    Start(UserRepository userRepo) {
+    UserService(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
