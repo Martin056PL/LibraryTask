@@ -2,8 +2,6 @@ package com.example.library.dao;
 
 import com.example.library.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 
 
@@ -18,7 +16,6 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    //@EventListener(ApplicationReadyEvent.class)
     public void addUser(/*Some user will be added as parameter*/) {
         User user = new User.UserBuilder()
                 .setUserLogin("1")
@@ -33,7 +30,7 @@ public class UserService {
                 .setUserZipCode("29")
                 .build();
 
-        System.out.println(user);
+
         userRepo.save(user);
     }
 

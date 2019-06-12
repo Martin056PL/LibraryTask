@@ -3,7 +3,6 @@ package com.example.library.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,11 +18,10 @@ public class Book implements Serializable, BookInterface {
     @Column
     private String title;
 
-
     @ElementCollection
     @CollectionTable(name = "book_authors", joinColumns = @JoinColumn(name = "bookId"))
     @Column(name = "author")
-    private List<String> authors = new ArrayList<>();
+    private List<String> authors;
 
     @Column
     private String ISBN;
@@ -42,7 +40,7 @@ public class Book implements Serializable, BookInterface {
         //constructor for JPA
     }
 
-    public Book(String title, List<String>  authors, String ISBN, String publishingHouse, String placeOfDeploy, BigDecimal price) {
+    private Book(String title, List<String> authors, String ISBN, String publishingHouse, String placeOfDeploy, BigDecimal price) {
         this.title = title;
         this.authors = authors;
         this.ISBN = ISBN;
