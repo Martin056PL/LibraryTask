@@ -12,12 +12,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
-public class BookController {
+public class BookSearchingController {
 
     private BookService service;
 
     @Autowired
-    public BookController(BookService service) {
+    public BookSearchingController(BookService service) {
         this.service = service;
     }
 
