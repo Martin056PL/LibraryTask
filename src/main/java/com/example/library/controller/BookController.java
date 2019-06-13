@@ -28,14 +28,25 @@ public class BookController {
         return "listOfBooks";
     }
 
-    @RequestMapping("/getByTitle/{title}")
+    @RequestMapping("/getBookByBookId/{bookId}")
+    public String returnBookByBookId(Model model, @PathVariable(value = "bookId") String bookId) {
+        try {
+            List<Book> books = service.returnBookByBookId(Long.parseLong(bookId));
+            model.addAttribute("books", books);
+        }catch (IllegalArgumentException e){
+            return "noSuchBook";
+        }
+        return "listOfBooks";
+    }
+
+    @RequestMapping("/getBookByTitle/{title}")
     public String returnBookByTitle(Model model, @PathVariable(value = "title") String title) {
         List<Book> books = service.returnBookByTitle(title);
         model.addAttribute("books", books);
         return "listOfBooks";
     }
 
-    @RequestMapping("/getByAuthor/{author}")
+    @RequestMapping("/getBookByAuthor/{author}")
     public String returnBookByAuthor(Model model, @PathVariable(value = "author") String author) {
         List<Book> books = service.findBookByAuthor(author);
         model.addAttribute("books", books);

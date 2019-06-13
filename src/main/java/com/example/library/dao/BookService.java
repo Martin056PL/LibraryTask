@@ -51,6 +51,12 @@ public class BookService {
 
     }
 
+    public List<Book> returnBookByBookId(Long bookId){
+        if(checkIfAvaliable(bookId)){
+        return repository.findBookByBookId(bookId);
+        }else throw new IllegalArgumentException();
+    }
+
     public List<Book> returnBookByTitle(String title){
         return repository.findBookByTitle(title);
     }
