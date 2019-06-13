@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <!-- Required meta tags -->
@@ -10,13 +10,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
+<!--<form action="bookId" method="get" name="bookId">
+    <label for="bookId">Book Id:</label>
+    <input type="text" id="bookId"/>-->
+
+    <form action="bookId" method="get">
+        <input type="text" name="bookId" placeholder="book">
+        <button type="button" class="btn btn-primary" name="search" value="search">Search!</button>
+    </form>
+
+<!--<form:form method="POST" action="com.example.library.controller" modelAttribute="bookId">
 <form>
     <div class="form-group">
         <label for="bookId">Insert Book id:</label>
         <input type="text" class="form-control" id="bookId" placeholder="Book ID">
-    </div>
+    </div>-->
 
-    <button type="button" class="btn btn-primary">Search!</button>
-</form>
+
+
+
+<!--</form>-->
 </body>
 </html>

@@ -5,9 +5,9 @@ import com.example.library.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -28,8 +28,8 @@ public class BookController {
         return "listOfBooks";
     }
 
-    @RequestMapping("/getBookByBookId/{bookId}")
-    public String returnBookByBookId(Model model, @PathVariable(value = "bookId") String bookId) {
+    @RequestMapping("/bookId")
+    public String returnBookByBookId(Model model, @RequestParam(value = "bookId") String bookId) {
         try {
             List<Book> books = service.returnBookByBookId(Long.parseLong(bookId));
             model.addAttribute("books", books);
