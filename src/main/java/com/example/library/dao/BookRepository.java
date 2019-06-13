@@ -15,4 +15,8 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 
     List<Book> findBookByAuthors(String author);
 
+    void deleteBookByBookId(Long bookId);
+
+    boolean existsBookByBookId(Long bookId);
+
 }

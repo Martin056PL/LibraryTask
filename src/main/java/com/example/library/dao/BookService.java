@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +57,16 @@ public class BookService {
 
     public List<Book> findBookByAuthor(String author){
         return repository.findBookByAuthors(author);
+    }
+
+    public void deleteBookByBookId(Long bookId){
+        if(checkIfAvaliable(bookId)){
+        repository.deleteBookByBookId(bookId);}
+        else throw new IllegalArgumentException();
+    }
+
+    private boolean checkIfAvaliable(Long bookID){
+        return repository.existsBookByBookId(bookID);
     }
 
     public void deleteBook(Book book) {
