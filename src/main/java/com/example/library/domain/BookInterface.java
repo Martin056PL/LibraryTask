@@ -9,7 +9,7 @@ public interface BookInterface {
 
     List<String> getAuthors();
 
-    String getISBN();
+    String getIsbn();
 
     String getPublishingHouse();
 

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -28,28 +28,81 @@ public class BookController {
         return "listOfBooks";
     }
 
-    @RequestMapping("/bookId")
+    @RequestMapping("/getBookByBookId")
     public String returnBookByBookId(Model model, @RequestParam(value = "bookId") String bookId) {
         try {
-            List<Book> books = service.returnBookByBookId(Long.parseLong(bookId));
+            List<Book> books = service.findBookByBookId(Long.parseLong(bookId));
             model.addAttribute("books", books);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return "noSuchBook";
         }
         return "listOfBooks";
     }
 
-    @RequestMapping("/getBookByTitle/{title}")
-    public String returnBookByTitle(Model model, @PathVariable(value = "title") String title) {
-        List<Book> books = service.returnBookByTitle(title);
-        model.addAttribute("books", books);
+    @RequestMapping("/getBookByTitle")
+    public String returnBookByTitle(Model model, @RequestParam(value = "bookTitle") String title) {
+        try {
+            List<Book> books = service.findBookByTitle(title);
+            model.addAttribute("books", books);
+        } catch (IllegalArgumentException e) {
+            return "noSuchBook";
+        }
         return "listOfBooks";
     }
 
-    @RequestMapping("/getBookByAuthor/{author}")
-    public String returnBookByAuthor(Model model, @PathVariable(value = "author") String author) {
-        List<Book> books = service.findBookByAuthor(author);
-        model.addAttribute("books", books);
+    @RequestMapping("/getBookByAuthor")
+    public String returnBookByAuthor(Model model, @RequestParam(value = "bookAuthor") String author) {
+        try {
+            List<Book> books = service.findBookByAuthor(author);
+            model.addAttribute("books", books);
+        } catch (IllegalArgumentException e) {
+            return "noSuchBook";
+        }
+        return "listOfBooks";
+    }
+
+    @RequestMapping("/getBookByIsbn")
+    public String returnBookByISBN(Model model, @RequestParam(value = "bookIsbn") String isbn) {
+        try {
+            List<Book> books = service.findBookByISBN(isbn);
+            model.addAttribute("books", books);
+        } catch (IllegalArgumentException e) {
+            return "noSuchBook";
+        }
+        return "listOfBooks";
+    }
+
+    @RequestMapping("/getBookByPublishingHouse")
+    public String returnBookByPublishingHouse(Model model, @RequestParam(value = "bookPublishingHouse") String publishingHouse) {
+        try {
+            List<Book> books = service.findBookByPublishingHouse(publishingHouse);
+            model.addAttribute("books", books);
+        } catch (IllegalArgumentException e) {
+            return "noSuchBook";
+        }
+        return "listOfBooks";
+    }
+
+    @RequestMapping("/getBookByPlaceOfDeploy")
+    public String returnBookByPlaceOfDeploy(Model model, @RequestParam(value = "bookByPlaceOfDeploy") String placeOfDeploy) {
+        try {
+            List<Book> books = service.findBookByPlaceOfDeploy(placeOfDeploy);
+            model.addAttribute("books", books);
+        } catch (IllegalArgumentException e) {
+            return "noSuchBook";
+        }
+        return "listOfBooks";
+    }
+
+    @RequestMapping("/getBookByPrice")
+    public String returnBookByPrice(Model model, @RequestParam(value = "bookByPrice")String price) {
+        try {
+            BigDecimal priceFromStringToBigDecimalWithLongConversion = BigDecimal.valueOf(Long.parseLong(price));
+            List<Book> books = service.findBookByPrice(priceFromStringToBigDecimalWithLongConversion);
+            model.addAttribute("books", books);
+        } catch (IllegalArgumentException e) {
+            return "noSuchBook";
+        }
         return "listOfBooks";
     }
 

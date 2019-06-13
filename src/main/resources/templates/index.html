@@ -11,25 +11,48 @@
 </head>
 <body>
 
-<!--<form action="bookId" method="get" name="bookId">
-    <label for="bookId">Book Id:</label>
-    <input type="text" id="bookId"/>-->
+<h1>Welcone in library! How would you like search yourbook?</h1>
 
-    <form action="bookId" method="get">
+<p>By ID:</p>
+    <form action="getBookByBookId" method="get">
         <input type="text" name="bookId" placeholder="book">
-        <button type="button" class="btn btn-primary" name="search" value="search">Search!</button>
+        <button type="submit" class="btn btn-primary" name="search">Search!</button>
     </form>
+<p>By title:</p>
+<form action="getBookByTitle" method="get">
+    <input type="text" name="bookTitle" placeholder="book by title">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
 
-<!--<form:form method="POST" action="com.example.library.controller" modelAttribute="bookId">
-<form>
-    <div class="form-group">
-        <label for="bookId">Insert Book id:</label>
-        <input type="text" class="form-control" id="bookId" placeholder="Book ID">
-    </div>-->
+<p>By author:</p>
+<form action="getBookByAuthor" method="get">
+    <input type="text" name="bookAuthor" placeholder="book by authors">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
 
+<p>By isbn:</p>
+<form action="getBookByIsbn" method="get">
+    <input type="text" name="bookIsbn" placeholder="book by isbn">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
 
+<p>By publishing house:</p>
+<form action="getBookByPublishingHouse" method="get">
+    <input type="text" name="bookPublishingHouse" placeholder="book by publishing house">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
 
+<p>By place of deploy:</p>
+<form action="getBookByPlaceOfDeploy" method="get">
+    <input type="text" name="bookByPlaceOfDeploy" placeholder="book by place of deploy">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
 
-<!--</form>-->
+<p>By price:</p>
+<form action="getBookByPrice" method="get">
+    <input type="text" name="bookByPrice" placeholder="book by price">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+
 </body>
 </html>

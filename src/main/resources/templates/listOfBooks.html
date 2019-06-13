@@ -21,7 +21,7 @@
         <tr>
             <th>Title</th>
             <th>Authors</th>
-            <th>ISBN</th>
+            <th>isbn</th>
             <th>Publishing House</th>
             <th>Place Of Deploy</th>
             <th>Price</th>
@@ -32,7 +32,7 @@
         <tr th:each="b : ${books}">
             <td th:text="${b.title}">
             <td th:text="${b.authors}">
-            <td th:text="${b.ISBN}">
+            <td th:text="${b.isbn}">
             <td th:text="${b.publishingHouse}">
             <td th:text="${b.placeOfDeploy}">
             <td th:text="${b.price}">
