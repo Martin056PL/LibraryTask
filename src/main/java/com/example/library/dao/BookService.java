@@ -50,6 +50,14 @@ public class BookService {
 
     }
 
+    public List<Book> returnBookByTitle(String title){
+        return repository.findBookByTitle(title);
+    }
+
+    public List<Book> findBookByAuthor(String author){
+        return repository.findBookByAuthors(author);
+    }
+
     public void deleteBook(Book book) {
         repository.delete(book);
     }

@@ -10,4 +10,9 @@ import java.util.List;
 public interface BookRepository extends CrudRepository<Book, Long> {
 
     List<Book> findAll();
+
+    List<Book> findBookByTitle(String title);
+
+    List<Book> findBookByAuthors(String author);
+
 }

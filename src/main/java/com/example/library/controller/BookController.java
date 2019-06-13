@@ -5,6 +5,8 @@ import com.example.library.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -19,9 +21,23 @@ public class BookController {
         this.service = service;
     }
 
-    @RequestMapping("/get")
+    @RequestMapping("/getAll")
     public String returnFullListOfBooks(Model model){
         List<Book> books= service.returnFullListOfBooks();
+        model.addAttribute("books", books);
+        return "listOfBooks";
+    }
+
+    @RequestMapping("/getByTitle/{title}")
+    public String returnBookByTitle(Model model, @PathVariable(value = "title") String title){
+        List<Book> books= service.returnBookByTitle(title);
+        model.addAttribute("books", books);
+        return "listOfBooks";
+    }
+
+    @RequestMapping("/getByAuthor/{author}")
+    public String returnBookByAuthor(Model model, @PathVariable(value = "author") String author){
+        List<Book> books= service.findBookByAuthor(author);
         model.addAttribute("books", books);
         return "listOfBooks";
     }
