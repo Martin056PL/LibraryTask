@@ -23,8 +23,8 @@ public class Book implements Serializable, BookInterface {
     @Column(name = "author")
     private List<String> authors;
 
-    @Column
-    private String ISBN;
+    @Column(name = "isbn")
+    private String isbn;
 
     @Column(name = "publishing_house")
     private String publishingHouse;
@@ -40,10 +40,10 @@ public class Book implements Serializable, BookInterface {
         //constructor for JPA
     }
 
-    private Book(String title, List<String> authors, String ISBN, String publishingHouse, String placeOfDeploy, BigDecimal price) {
+    private Book(String title, List<String> authors, String isbn, String publishingHouse, String placeOfDeploy, BigDecimal price) {
         this.title = title;
         this.authors = authors;
-        this.ISBN = ISBN;
+        this.isbn = isbn;
         this.publishingHouse = publishingHouse;
         this.placeOfDeploy = placeOfDeploy;
         this.price = price;
@@ -60,8 +60,8 @@ public class Book implements Serializable, BookInterface {
     }
 
     @Override
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class Book implements Serializable, BookInterface {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", authors=" + authors +
-                ", ISBN='" + ISBN + '\'' +
+                ", isbn='" + isbn + '\'' +
                 ", publishingHouse='" + publishingHouse + '\'' +
                 ", placeOfDeploy='" + placeOfDeploy + '\'' +
                 ", price=" + price +

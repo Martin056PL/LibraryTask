@@ -2,32 +2,32 @@ package com.example.library.dao;
 
 import com.example.library.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@Component
 public class BookService {
 
     private BookRepository repository;
 
     @Autowired
-    BookService(BookRepository repository){
+    BookService(BookRepository repository) {
         this.repository = repository;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void addBook(){
+
+    //@EventListener(ApplicationReadyEvent.class)
+    public void addBook() {
         List<String> authorList = new ArrayList<>();
-        authorList.add("Sienkiewicz");
-        authorList.add("Boczarski");
+        authorList.add("Strączke");
+        authorList.add("Świtoniak");
+        authorList.add("Fajanczek");
 
         Book book = new Book.BookBuilder()
-                .setTitle("Asd")
+                .setTitle("Absolut")
                 .setAuthors(authorList)
                 .setISBN("123-123D-123")
                 .setPlaceOfDeploy("Warsaw")
@@ -40,7 +40,89 @@ public class BookService {
         repository.save(book);
     }
 
-    public void deleteBook(Book book){
+    public List<Book> returnFullListOfBooks(){
+        return repository.findAll();
+
+    }
+
+    public List<Book> findBookByBookId(Long bookId){
+        if(checkIfAvailableByBookId(bookId)){
+        return repository.findBookByBookId(bookId);
+        }else throw new IllegalArgumentException();
+    }
+
+    public List<Book> findBookByTitle(String title){
+        if(checkIfAvailableByTitle(title)){
+            return repository.findBookByTitle(title);
+        }else throw new IllegalArgumentException();
+
+    }
+
+    public List<Book> findBookByAuthor(String author){
+        if(checkIfAvailableByAuthor(author))
+        return repository.findBookByAuthors(author);
+        else throw new IllegalArgumentException();
+    }
+
+    public List<Book> findBookByISBN(String isbn){
+        if(checkIfAvailableByISBN(isbn)) {
+            return repository.findBookByIsbn(isbn);
+       }else throw new IllegalArgumentException();
+    }
+
+    public List<Book> findBookByPlaceOfDeploy(String placeOfDeploy){
+        if(checkIfAvailableByPlaceOfDeploy(placeOfDeploy)) {
+            return repository.findBookByPlaceOfDeploy(placeOfDeploy);
+        }else throw new IllegalArgumentException();
+    }
+
+    public List<Book> findBookByPublishingHouse(String publishingHouse){
+        if(checkIfAvailableByPublishingHouse(publishingHouse)) {
+            return repository.findBookByPublishingHouse(publishingHouse);
+        }else throw new IllegalArgumentException();
+    }
+
+    public List<Book> findBookByPrice (BigDecimal price){
+        if(checkIfAvailableByPrice(price)) {
+            return repository.findBookByPrice(price);
+        }else throw new IllegalArgumentException();
+    }
+
+    public void deleteBookByBookId(Long bookId){
+        if(checkIfAvailableByBookId(bookId)){
+        repository.deleteBookByBookId(bookId);
+        }else throw new IllegalArgumentException();
+    }
+
+    private boolean checkIfAvailableByBookId(Long bookID){
+        return repository.existsBookByBookId(bookID);
+    }
+
+    private boolean checkIfAvailableByTitle(String title){
+        return repository.existsBookByTitle(title);
+    }
+
+    private boolean checkIfAvailableByAuthor(String authors){
+        return repository.existsBookByAuthors(authors);
+    }
+
+    private boolean checkIfAvailableByISBN(String isbn){
+        return repository.existsBookByIsbn(isbn);
+    }
+
+    private boolean checkIfAvailableByPlaceOfDeploy(String placeOfDeploy){
+        return repository.existsBookByPlaceOfDeploy(placeOfDeploy);
+    }
+
+    private boolean checkIfAvailableByPublishingHouse(String publishingHouse){
+        return repository.existsBookByPublishingHouse(publishingHouse);
+    }
+
+    private boolean checkIfAvailableByPrice(BigDecimal price){
+        return repository.existsBookByPrice(price);
+    }
+
+    public void deleteBook(Book book) {
         repository.delete(book);
     }
 

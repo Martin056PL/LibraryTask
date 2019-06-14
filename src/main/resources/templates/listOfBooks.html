@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <h1> table of books: </h1>
+
+    <table class="table table-bordered table-striped ">
+
+        <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>isbn</th>
+            <th>Publishing House</th>
+            <th>Place Of Deploy</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="b : ${books}">
+            <td th:text="${b.title}">
+            <td th:text="${b.authors}">
+            <td th:text="${b.isbn}">
+            <td th:text="${b.publishingHouse}">
+            <td th:text="${b.placeOfDeploy}">
+            <td th:text="${b.price}">
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>

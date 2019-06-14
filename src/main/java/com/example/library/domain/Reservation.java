@@ -17,12 +17,12 @@ public class Reservation implements Serializable {
     @Column(name = "reservation_id")
     private Long reservation_id;
 
-    @ManyToOne
+
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "car_id")
+
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @PastOrPresent

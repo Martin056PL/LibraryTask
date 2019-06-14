@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<h1>Welcone in library! How would you like search yourbook?</h1>
+
+<p>By ID:</p>
+<form action="getBookByBookId" method="get">
+    <input type="text" name="bookId" placeholder="book">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+<p>By title:</p>
+<form action="getBookByTitle" method="get">
+    <input type="text" name="bookTitle" placeholder="book by title">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+
+<p>By author:</p>
+<form action="getBookByAuthor" method="get">
+    <input type="text" name="bookAuthor" placeholder="book by authors">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+
+<p>By isbn:</p>
+<form action="getBookByIsbn" method="get">
+    <input type="text" name="bookIsbn" placeholder="book by isbn">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+
+<p>By publishing house:</p>
+<form action="getBookByPublishingHouse" method="get">
+    <input type="text" name="bookPublishingHouse" placeholder="book by publishing house">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+
+<p>By place of deploy:</p>
+<form action="getBookByPlaceOfDeploy" method="get">
+    <input type="text" name="bookByPlaceOfDeploy" placeholder="book by place of deploy">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+
+<p>By price:</p>
+<form action="getBookByPrice" method="get">
+    <input type="text" name="bookByPrice" placeholder="book by price">
+    <button type="submit" class="btn btn-primary" name="search">Search!</button>
+</form>
+
+</body>
+</html>
