@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<h1>Register here!</h1>
+
+
+<form action="RegisterNewUser" method="post">
+    <p>Login:</p>
+    <input type="text" name="login" placeholder="book">
+    <p>email:</p>
+    <input type="text" name="email" placeholder="book by title">
+    <p>Password:</p>
+    <input type="text" name="password" placeholder="book by authors">
+    <p>First Name:</p>
+    <input type="text" name="firstName" placeholder="book by isbn">
+    <p>Last Name:</p>
+    <input type="text" name="lastName" placeholder="book by publishing house">
+    <p>Phone Number:</p>
+    <input type="text" name="phoneNumber" placeholder="book by place of deploy">
+    <p>Date Of Birth:</p>
+    <input type="text" name="dateOfBirth" placeholder="book by price">
+    <p>Address:</p>
+    <input type="text" name="address" placeholder="book by price">
+    <p>City:</p>
+    <input type="text" name="city" placeholder="book by price">
+    <p>Zip Code:</p>
+    <input type="text" name="zipCode" placeholder="book by price">
+    <p><button type="submit" class="btn btn-primary" name="search">Register!</button></p>
+</form>
+
+</body>
+</html>
