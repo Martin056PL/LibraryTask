@@ -2,8 +2,8 @@ package com.example.library.controller;
 
 
 import com.example.library.dao.UserRepository;
+import com.example.library.dao.UserService;
 import com.example.library.domain.User;
-import com.example.library.utils.UserDataValidators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserRegistrationController {
 
     private UserRepository repository;
-    private UserDataValidators validators;
+    private UserService service;
 
     @Autowired
-    public UserRegistrationController(UserRepository repository, UserDataValidators validators) {
+    private UserRegistrationController(UserRepository repository, UserService service) {
         this.repository = repository;
-        this.validators = validators;
+        this.service = service;
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
@@ -36,12 +36,13 @@ public class UserRegistrationController {
             , @RequestParam(value = "city") String city
             , @RequestParam(value = "zipCode") String zipCode) {
 
-        User user = getUser(login, password, email, firstName, lastName, phoneNumber, dateOfBirth, address, city, zipCode);
+        User user = createUser(login, password, email, firstName, lastName, phoneNumber, dateOfBirth, address, city, zipCode);
 
-        boolean areRegistrationDataCorrect = validators.validateUserData(user);
+        boolean areRegistrationDataCorrect = service.validateUserData(user);
+        boolean areRegistrationDataAvailable = service.isDataAvailable(user);
 
-        if (areRegistrationDataCorrect) {
-            repository.save(user);
+        if (areRegistrationDataCorrect && areRegistrationDataAvailable) {
+            service.saveUser(user);
             return "userSave";
         } else {
             model.addAttribute("IncorrectData", true);
@@ -50,20 +51,18 @@ public class UserRegistrationController {
 
     }
 
-    private User getUser(@RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("phoneNumber") Long phoneNumber, @RequestParam("dateOfBirth") String dateOfBirth, @RequestParam("address") String address, @RequestParam("city") String city, @RequestParam("zipCode") String zipCode) {
+    private User createUser(@RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("phoneNumber") Long phoneNumber, @RequestParam("dateOfBirth") String dateOfBirth, @RequestParam("address") String address, @RequestParam("city") String city, @RequestParam("zipCode") String zipCode) {
         return new User.UserBuilder()
-                    .setUserLogin(login)
-                    .setUserPassword(password)
-                    .setUserEmail(email)
-                    .setUserPhoneNumber(phoneNumber)
-                    .setUserFirstName(firstName)
-                    .setUserLastName(lastName)
-                    .setUserDateOfBirth(dateOfBirth)
-                    .setUserAddress(address)
-                    .setUserCity(city)
-                    .setUserZipCode(zipCode)
-                    .build();
+                .setUserLogin(login)
+                .setUserPassword(password)
+                .setUserEmail(email)
+                .setUserPhoneNumber(phoneNumber)
+                .setUserFirstName(firstName)
+                .setUserLastName(lastName)
+                .setUserDateOfBirth(dateOfBirth)
+                .setUserAddress(address)
+                .setUserCity(city)
+                .setUserZipCode(zipCode)
+                .build();
     }
-
-
 }
