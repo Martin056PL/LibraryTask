@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 @Controller
@@ -33,7 +35,7 @@ public class UserService {
                 .build();
     }
 
-    public void saveUser(User user){
+    public void saveUser(User user) {
         repository.save(user);
     }
 
@@ -41,15 +43,25 @@ public class UserService {
         String password = user.getPassword();
         String email = user.getEmail();
         LocalDate dateOfBirth = user.getDateOfBirth();
-        return validateUsersPassword(password) && validateUsersEmail(email)&&validateUsersAge(dateOfBirth);
+        return validateUsersPassword(password) && validateUsersEmail(email) && validateUsersAge(dateOfBirth);
     }
 
-    public boolean isDataAvailable(User user){
+    public boolean isDataAvailable(User user) {
         String login = user.getLogin();
         String email = user.getEmail();
         boolean isEmailOk = repository.existsByEmail(email);
         boolean isLoginOk = repository.existsByLogin(login);
         return isEmailOk && isLoginOk;
+    }
+
+    public boolean areLoginDataCorrect(String login, String password) {
+        Optional<User> user = findUser(login);
+        return user.map(value -> value.getPassword().equals(password)).orElse(false);
+    }
+
+    private Optional<User> findUser(String login) throws NoSuchElementException {
+        User userByLogin = repository.findUserByLogin(login);
+        return Optional.ofNullable(userByLogin);
     }
 
     private boolean validateUsersPassword(String password) {

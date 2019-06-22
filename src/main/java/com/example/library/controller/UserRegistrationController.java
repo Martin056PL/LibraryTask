@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class UserRegistrationController {
 
@@ -50,6 +52,24 @@ public class UserRegistrationController {
         }
 
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginUser(Model model
+            , @RequestParam(value = "login") String login
+            , @RequestParam(value = "password") String password
+            , HttpServletRequest request) {
+
+        boolean areLoginDataCorrect = service.areLoginDataCorrect(login, password);
+
+        if (areLoginDataCorrect) {
+            request.getSession();
+            return "loginPage";
+        } else {
+            model.addAttribute("IncorrectData", true);
+            return "loginForm";
+        }
+    }
+
 
     private User createUser(@RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("phoneNumber") Long phoneNumber, @RequestParam("dateOfBirth") String dateOfBirth, @RequestParam("address") String address, @RequestParam("city") String city, @RequestParam("zipCode") String zipCode) {
         return new User.UserBuilder()

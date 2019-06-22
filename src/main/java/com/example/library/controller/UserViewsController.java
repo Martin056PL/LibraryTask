@@ -16,4 +16,9 @@ public class UserViewsController {
         return "addUser";
     }
 
+    @RequestMapping("/loginForm")
+    public String loginUser() {
+        return "loginForm";
+    }
+
 }
