@@ -1,4 +1,4 @@
-package com.example.library.controller;
+package com.example.library.controllers;
 
 import com.example.library.dao.BookService;
 import com.example.library.domain.Book;

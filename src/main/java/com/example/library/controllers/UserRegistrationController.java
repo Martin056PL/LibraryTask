@@ -1,7 +1,6 @@
-package com.example.library.controller;
+package com.example.library.controllers;
 
 
-import com.example.library.dao.UserRepository;
 import com.example.library.dao.UserService;
 import com.example.library.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserRegistrationController {
 
-    private UserRepository repository;
     private UserService service;
 
     @Autowired
-    private UserRegistrationController(UserRepository repository, UserService service) {
-        this.repository = repository;
-        this.service = service;
-    }
+    private UserRegistrationController(UserService service) {
+        this.service = service;}
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String saveNewUser(Model model
