@@ -59,7 +59,7 @@ public class UserService {
         return user.map(value -> value.getPassword().equals(password)).orElse(false);
     }
 
-    private Optional<User> findUser(String login) throws NoSuchElementException {
+    private Optional<User> findUser(String login){
         User userByLogin = repository.findUserByLogin(login);
         return Optional.ofNullable(userByLogin);
     }
