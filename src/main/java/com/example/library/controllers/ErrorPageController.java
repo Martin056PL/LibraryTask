@@ -17,4 +17,11 @@ public class ErrorPageController implements ErrorController {
     public String showErrorPage(){
         return "error404";
     }
+
+    @RequestMapping("/index")
+    public String showMainPage(){
+        return "index";
+    }
+
+
 }
