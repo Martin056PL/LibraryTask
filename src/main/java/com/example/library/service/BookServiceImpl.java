@@ -1,5 +1,6 @@
-package com.example.library.dao;
+package com.example.library.service;
 
+import com.example.library.dao.BookRepository;
 import com.example.library.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

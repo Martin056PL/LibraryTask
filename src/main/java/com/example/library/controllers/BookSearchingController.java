@@ -1,6 +1,6 @@
 package com.example.library.controllers;
 
-import com.example.library.dao.BookServiceImpl;
+import com.example.library.service.BookServiceImpl;
 import com.example.library.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -49,6 +49,10 @@ public class Book implements Serializable, BookInterface {
         this.price = price;
     }
 
+    public Long getBookId() {
+        return bookId;
+    }
+
     @Override
     public String getTitle() {
         return title;

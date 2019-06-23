@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "reservation")
 public class Reservation implements Serializable {
 
     private static final long serialVersionUID = -4736003679636306554L;
