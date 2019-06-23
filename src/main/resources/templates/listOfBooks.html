@@ -25,6 +25,7 @@
             <th>Publishing House</th>
             <th>Place Of Deploy</th>
             <th>Price</th>
+            <th> </th>
         </tr>
         </thead>
 
@@ -36,6 +37,9 @@
             <td th:text="${b.publishingHouse}">
             <td th:text="${b.placeOfDeploy}">
             <td th:text="${b.price}">
+        <td>
+            <button class="btn btn-success" type="submit">Make reservation</button>
+        </td>
         </tbody>
 
     </table>

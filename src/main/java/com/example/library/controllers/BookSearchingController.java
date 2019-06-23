@@ -1,6 +1,6 @@
 package com.example.library.controllers;
 
-import com.example.library.dao.BookService;
+import com.example.library.dao.BookServiceImpl;
 import com.example.library.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +14,10 @@ import java.util.List;
 @Controller
 public class BookSearchingController {
 
-    private BookService service;
+    private BookServiceImpl service;
 
     @Autowired
-    public BookSearchingController(BookService service) {
+    public BookSearchingController(BookServiceImpl service) {
         this.service = service;
     }
 

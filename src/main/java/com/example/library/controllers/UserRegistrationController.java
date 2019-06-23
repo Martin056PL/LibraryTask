@@ -1,7 +1,7 @@
 package com.example.library.controllers;
 
 
-import com.example.library.dao.UserService;
+import com.example.library.dao.UserServiceImpl;
 import com.example.library.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserRegistrationController {
 
-    private UserService service;
+    private UserServiceImpl service;
 
     @Autowired
-    private UserRegistrationController(UserService service) {
+    private UserRegistrationController(UserServiceImpl service) {
         this.service = service;}
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
