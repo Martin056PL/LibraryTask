@@ -11,4 +11,9 @@ public class BookViewsController {
         return "bookSearcher";
     }
 
+    @RequestMapping("/")
+    public String showMainPage1(){
+        return "index";
+    }
+
 }

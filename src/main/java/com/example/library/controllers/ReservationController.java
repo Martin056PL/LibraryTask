@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("/makeReservation")
 public class ReservationController {
 
     private ReservationServiceImpl service;
@@ -19,14 +20,9 @@ public class ReservationController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/makeReservation/{bookId}",method = RequestMethod.GET)
+    @RequestMapping(value = "{bookId}",method = RequestMethod.GET)
     public String makeReservation(@PathVariable Long bookId, HttpServletRequest request){
         service.makeReservation(bookId,request);
         return "confirmationOfBookReservation";
-    }
-
-    @RequestMapping("/lol")
-    public String showMainPage1(){
-        return "index";
     }
 }
