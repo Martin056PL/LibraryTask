@@ -23,6 +23,8 @@ public interface BookService {
 
     List<Book> findBookByPrice (BigDecimal price);
 
+    List<Book> findAllByIsAvailableTrue();
+
     void deleteBookByBookId(Long bookId);
 
 

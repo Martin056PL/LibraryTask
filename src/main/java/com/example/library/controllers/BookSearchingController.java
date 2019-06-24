@@ -28,6 +28,13 @@ public class BookSearchingController {
         return "listOfBooks";
     }
 
+    @RequestMapping("/getAllAvailable")
+    public String returnFullListAvailableBooks(Model model) {
+        List<Book> books = service.findAllByIsAvailableTrue();
+        model.addAttribute("books", books);
+        return "listOfBooks";
+    }
+
     @RequestMapping("/getBookByBookId")
     public String returnBookByBookId(Model model, @RequestParam(value = "bookId") String bookId) {
         try {

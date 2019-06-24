@@ -21,51 +21,63 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> returnFullListOfBooks(){
         return repository.findAll();
-
     }
+
     @Override
     public List<Book> findBookByBookId(Long bookId){
         if(checkIfAvailableByBookId(bookId)){
         return repository.findBookByBookId(bookId);
         }else throw new IllegalArgumentException();
     }
+
     @Override
     public List<Book> findBookByTitle(String title){
         if(checkIfAvailableByTitle(title)){
             return repository.findBookByTitle(title);
         }else throw new IllegalArgumentException();
-
     }
+
     @Override
     public List<Book> findBookByAuthor(String author){
         if(checkIfAvailableByAuthor(author))
         return repository.findBookByAuthors(author);
         else throw new IllegalArgumentException();
     }
+
     @Override
     public List<Book> findBookByISBN(String isbn){
         if(checkIfAvailableByISBN(isbn)) {
             return repository.findBookByIsbn(isbn);
        }else throw new IllegalArgumentException();
     }
+
     @Override
     public List<Book> findBookByPlaceOfDeploy(String placeOfDeploy){
         if(checkIfAvailableByPlaceOfDeploy(placeOfDeploy)) {
             return repository.findBookByPlaceOfDeploy(placeOfDeploy);
         }else throw new IllegalArgumentException();
     }
+
     @Override
     public List<Book> findBookByPublishingHouse(String publishingHouse){
         if(checkIfAvailableByPublishingHouse(publishingHouse)) {
             return repository.findBookByPublishingHouse(publishingHouse);
         }else throw new IllegalArgumentException();
     }
+
     @Override
     public List<Book> findBookByPrice (BigDecimal price){
         if(checkIfAvailableByPrice(price)) {
             return repository.findBookByPrice(price);
         }else throw new IllegalArgumentException();
     }
+
+    @Override
+    public List<Book> findAllByIsAvailableTrue() {
+        return repository.findAllByIsAvailableTrue();
+    }
+
+
     @Override
     public void deleteBookByBookId(Long bookId){
         if(checkIfAvailableByBookId(bookId)){

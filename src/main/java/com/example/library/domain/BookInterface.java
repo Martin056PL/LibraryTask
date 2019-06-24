@@ -17,4 +17,6 @@ public interface BookInterface {
 
     BigDecimal getPrice();
 
+    Boolean getIsAvailable();
+
 }

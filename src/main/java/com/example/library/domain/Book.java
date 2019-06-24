@@ -35,18 +35,22 @@ public class Book implements Serializable, BookInterface {
     @Column
     private BigDecimal price;
 
+    @Column(name = "is_available")
+    private Boolean isAvailable;
+
 
     public Book() {
         //constructor for JPA
     }
 
-    private Book(String title, List<String> authors, String isbn, String publishingHouse, String placeOfDeploy, BigDecimal price) {
+    private Book(String title, List<String> authors, String isbn, String publishingHouse, String placeOfDeploy, BigDecimal price, Boolean isAvailable) {
         this.title = title;
         this.authors = authors;
         this.isbn = isbn;
         this.publishingHouse = publishingHouse;
         this.placeOfDeploy = placeOfDeploy;
         this.price = price;
+        this.isAvailable = isAvailable;
     }
 
     public Long getBookId() {
@@ -84,6 +88,11 @@ public class Book implements Serializable, BookInterface {
     }
 
     @Override
+    public Boolean getIsAvailable(){
+        return isAvailable;
+    }
+
+    @Override
     public String toString() {
         return "Book{" +
                 "title='" + title + '\'' +
@@ -91,7 +100,8 @@ public class Book implements Serializable, BookInterface {
                 ", isbn='" + isbn + '\'' +
                 ", publishingHouse='" + publishingHouse + '\'' +
                 ", placeOfDeploy='" + placeOfDeploy + '\'' +
-                ", price=" + price +
+                ", price=" + price + '\'' +
+                ", isAvailable=" + isAvailable +
                 '}';
     }
 
@@ -103,6 +113,7 @@ public class Book implements Serializable, BookInterface {
         private String publishingHouse;
         private String placeOfDeploy;
         private BigDecimal price;
+        private Boolean isAvailable;
 
 
         public BookBuilder setTitle(String title) {
@@ -135,14 +146,19 @@ public class Book implements Serializable, BookInterface {
             return this;
         }
 
+        public BookBuilder setIsBorrow(Boolean isAvailable) {
+            this.isAvailable = isAvailable;
+            return this;
+        }
+
         public Book build() {
 
-            boolean isNull = title == null || authors == null || ISBN == null || publishingHouse == null || placeOfDeploy == null || price == null;
+            boolean isNull = title == null || authors == null || ISBN == null || publishingHouse == null || placeOfDeploy == null || price == null || isAvailable == null;
 
             if (isNull) {
                 throw new RuntimeException("Some fields are null!");
             } else {
-                return new Book(title, authors, ISBN, publishingHouse, placeOfDeploy, price);
+                return new Book(title, authors, ISBN, publishingHouse, placeOfDeploy, price, isAvailable);
             }
         }
     }
