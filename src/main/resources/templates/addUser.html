@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<h1>Register here!</h1>
+
+<p th:if="${IncorrectData}", class="error">User data are Incorrect!</p>
+<form action="/addUser" method="post">
+    <p>Login:</p>
+    <label>
+        <input type="text" name="login" placeholder="Your login">
+    </label>
+    <p>email:</p>
+    <label>
+        <input type="text" name="email" placeholder="Your email address">
+    </label>
+    <p>Password:</p>
+    <label>
+        <input type="text" name="password" placeholder="Your password">
+    </label>
+    <p>First Name:</p>
+    <label>
+        <input type="text" name="firstName" placeholder="Your first name">
+    </label>
+    <p>Last Name:</p>
+    <label>
+        <input type="text" name="lastName" placeholder="Your last name">
+    </label>
+    <p>Phone Number:</p>
+    <label>
+        <input type="text" name="phoneNumber" placeholder="Your phone number">
+    </label>
+    <p>Date Of Birth:</p>
+    <label>
+        <input type="text" name="dateOfBirth" placeholder="Your date of birth in format: yyyy-MM-dd">
+    </label>
+    <p>Address:</p>
+    <label>
+        <input type="text" name="address" placeholder="Your addres">
+    </label>
+    <p>City:</p>
+    <label>
+        <input type="text" name="city" placeholder="Your city">
+    </label>
+    <p>Zip Code:</p>
+    <label>
+        <input type="text" name="zipCode" placeholder="Your zip-code">
+    </label>
+    <p><button type="submit" class="btn btn-primary" name="search">Register!</button></p>
+</form>
+
+</body>
+</html>

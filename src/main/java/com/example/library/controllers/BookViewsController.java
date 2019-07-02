@@ -1,4 +1,4 @@
-package com.example.library.controller;
+package com.example.library.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +9,11 @@ public class BookViewsController {
     @RequestMapping("/bookSearcher")
     public String defectDetails() {
         return "bookSearcher";
+    }
+
+    @RequestMapping("/")
+    public String showMainPage1(){
+        return "index";
     }
 
 }

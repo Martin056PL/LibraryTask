@@ -25,9 +25,9 @@
             <th>Publishing House</th>
             <th>Place Of Deploy</th>
             <th>Price</th>
+            <th></th>
         </tr>
         </thead>
-
         <tbody>
         <tr th:each="b : ${books}">
             <td th:text="${b.title}">
@@ -36,10 +36,13 @@
             <td th:text="${b.publishingHouse}">
             <td th:text="${b.placeOfDeploy}">
             <td th:text="${b.price}">
+            <td>
+                <a th:href="@{makeReservation/{bookId} (bookId=${b.getBookId()})}">
+                    <span>Make reservation</span>
+                </a>
+            </td>
         </tbody>
-
     </table>
-
 </div>
 </body>
 </html>

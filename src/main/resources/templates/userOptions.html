@@ -10,11 +10,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<p th:text="${session.login}" th:unless="${session == null}">Welcome in our library! What would you like to do?</p>
-<!--<h1>Welcome in our library! What would you like to do?</h1>-->
 
-<a th:href="@{userOptions}" class="btn btn-primary" type="button" >User options</a>
-<a th:href="@{bookSearcher}" class="btn btn-primary" role="button"> Book options </a>
-<a th:href="@{logout}" class="btn btn-primary" role="button"> Log out </a>
+<h1>Welcome in our library! What would you like to do?</h1>
+
+<a th:href="@{addUser}" class="btn btn-primary" type="button" >Register!</a>
+<a th:href="@{loginForm}" class="btn btn-primary" role="button"> Login! </a>
 </body>
 </html>

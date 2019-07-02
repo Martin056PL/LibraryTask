@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<h1>Log in!</h1>
+
+<p th:if="${IncorrectData}", class="error">User data are Incorrect!</p>
+<form action="/login" method="post">
+    <p>Login:</p>
+    <label>
+        <input type="text" name="login" placeholder="Your login">
+    </label>
+    <p>email:</p>
+    <label>
+        <input type="password" name="password" placeholder="Your password">
+    </label>
+
+    <p><button type="submit" class="btn btn-primary" name="search">Log in!</button></p>
+</form>
+
+</body>
+</html>

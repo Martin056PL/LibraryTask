@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "reservation")
 public class Reservation implements Serializable {
 
     private static final long serialVersionUID = -4736003679636306554L;
@@ -17,11 +17,11 @@ public class Reservation implements Serializable {
     @Column(name = "reservation_id")
     private Long reservation_id;
 
-
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-
+    @OneToOne
     @JoinColumn(name = "book_id")
     private Book book;
 
