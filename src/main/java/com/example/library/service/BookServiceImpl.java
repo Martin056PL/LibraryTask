@@ -3,9 +3,12 @@ package com.example.library.service;
 import com.example.library.dao.BookRepository;
 import com.example.library.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -73,6 +76,15 @@ public class BookServiceImpl implements BookService {
         }else throw new IllegalArgumentException();
     }
 
+    public void addBook(Book book){
+        repository.save(book);
+    }
+
+    public void deleteBook(Long id) {
+        repository.deleteBookByBookId(id);
+    }
+
+
     private boolean checkIfAvailableByBookId(Long bookID){
         return repository.existsBookByBookId(bookID);
     }
@@ -101,8 +113,26 @@ public class BookServiceImpl implements BookService {
         return repository.existsBookByPrice(price);
     }
 
-    public void deleteBook(Book book) {
-        repository.delete(book);
+
+    //@EventListener(ApplicationReadyEvent.class)
+    public void addBook(){
+        List<String> authorList = new ArrayList<>();
+        authorList.add("Christian Bauer");
+        authorList.add("Gavin King");
+        authorList.add("Gary Gregory");
+
+        Book book = new Book.BookBuilder()
+                .setTitle("Java Persistance")
+                .setAuthors(authorList)
+                .setISBN("978-83-283-2782-5")
+                .setPlaceOfDeploy("Gliwice")
+                .setPublishingHouse("Helion")
+                .setPrice(BigDecimal.valueOf(99.00))
+                .build();
+
+
+        System.out.println(book);
+        repository.save(book);
     }
 
 }
