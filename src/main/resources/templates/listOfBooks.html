@@ -37,8 +37,8 @@
             <td th:text="${b.placeOfDeploy}">
             <td th:text="${b.price}">
             <td>
-                <a th:href="@{makeReservation/{bookId} (bookId=${b.getBookId()})}">
-                    <span>Make reservation</span>
+                <a th:href="@{makeReservation/{bookId} (bookId=${b.getBookId()})}" type="button">
+                    <span th:if="${b.getIsAvailable()}">Make reservation</span>
                 </a>
             </td>
         </tbody>
